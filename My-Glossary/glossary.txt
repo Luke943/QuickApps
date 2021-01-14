@@ -1,0 +1,6 @@
+algorithm	Step by step instructions to complete a task
+bug	Piece of code that causes a program to fail
+new entry	New definition
+pointer	A variable that holds a memory address
+byte	8 bits
+python	A programming language
