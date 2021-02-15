@@ -6,7 +6,7 @@ from dearpygui.simple import *
 import random
 import pandas as pd
 import string
-import nltk
+#import nltk
 #nltk.download('punkt')
 #nltk.download('stopwords')
 

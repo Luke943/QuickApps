@@ -24,8 +24,8 @@ class App_MainWindow(Ui_MainWindow):
             None, "Select image", "", "Image files (*.png *.jpg *.jpeg *.bmp)")
         if filename:
             pixmap = QtGui.QPixmap(filename)
-            pixmap = pixmap.scaled(self.imageLbl.width(
-            ), self.imageLbl.height(), QtCore.Qt.KeepAspectRatio)
+            pixmap = pixmap.scaled(self.imageLbl.width(),
+            	self.imageLbl.height(), QtCore.Qt.KeepAspectRatio)
             self.imageLbl.setPixmap(pixmap)
             self.imageLbl.setAlignment(QtCore.Qt.AlignCenter)
 
