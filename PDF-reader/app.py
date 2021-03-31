@@ -42,11 +42,6 @@ def open_file():
     browse_text.set("Browse")
 
 
-def on_closing():
-    # function for closing event
-    root.destroy()
-
-
 # browse button
 browse_text = tk.StringVar()
 browse_text.set("Browse")
@@ -58,7 +53,7 @@ canvas = tk.Canvas(root, width=600, height=250)
 canvas.grid(columnspan=3)
 
 # on close window
-root.protocol("WM_DELETE_WINDOW", on_closing)
+root.protocol("WM_DELETE_WINDOW", root.destroy)
 
 # close main program
 root.mainloop()
