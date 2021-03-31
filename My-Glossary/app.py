@@ -1,6 +1,6 @@
 import tkinter as tk
 from PIL import Image, ImageTk
-from functions import *
+import functions
 
 glossary_file = "glossary.txt"
 add_msg = "Add to glossary"
@@ -24,54 +24,55 @@ def on_change():
     key = text_entry.get().lower()
     value = output.get(1.0, "end")
     if add_edit_text.get() == edit_msg:
-        edit_glossary(key, value, glossary_file)
+        functions.edit_glossary(key, value, glossary_file)
     elif add_edit_text.get() == add_msg:
-        add_glossary(key, value, glossary_file)
+        functions.add_glossary(key, value, glossary_file)
     my_dictionary[key] = value
 
 
-# initialise dictionary from file
-my_dictionary = create_dictionary(glossary_file)
+if __name__ == '__main__':
+    # initialise dictionary from file
+    my_dictionary = functions.create_dictionary(glossary_file)
 
-# initialise Tk class
-app = tk.Tk()
-app.title("My Glossary")
-app.configure(bg="gray")
-canvas = tk.Canvas(app, width=400, height=400)
+    # initialise Tk class
+    app = tk.Tk()
+    app.title("My Glossary")
+    app.configure(bg="gray")
+    canvas = tk.Canvas(app, width=400, height=400)
 
-# logo
-logo = Image.open("logo.png")
-logo = ImageTk.PhotoImage(logo)
-logo_label = tk.Label(image=logo)
-logo_label.image = logo
-logo_label.grid(column=0, row=0)
+    # logo
+    logo = Image.open("logo.png")
+    logo = ImageTk.PhotoImage(logo)
+    logo_label = tk.Label(image=logo)
+    logo_label.image = logo
+    logo_label.grid(column=0, row=0)
 
-# label for instruction
-instruction_label = tk.Label(app, text="Enter the word you would like a definition for:",
-                             bg="gray", fg="#ffcd0e", font="none 12 bold", padx=15, pady=15)
-instruction_label.grid(column=0, row=1)
+    # label for instruction
+    instruction_label = tk.Label(app, text="Enter the word you would like a definition for:",
+                                 bg="gray", fg="#ffcd0e", font="none 12 bold", padx=15, pady=15)
+    instruction_label.grid(column=0, row=1)
 
-# text entry box
-text_entry = tk.Entry(app, width=20, bg="white", font="none 12")
-text_entry.grid(row=2, column=0)
+    # text entry box
+    text_entry = tk.Entry(app, width=20, bg="white", font="none 12")
+    text_entry.grid(row=2, column=0)
 
-# search button
-search_button = tk.Button(
-    app, text="Search", font="none 12", width=6, command=on_search)
-search_button.grid(row=3, column=0)
+    # search button
+    search_button = tk.Button(
+        app, text="Search", font="none 12", width=6, command=on_search)
+    search_button.grid(row=3, column=0)
 
-# label for definition
-instruction_label = tk.Label(app, text="Definition:",
-                             bg="gray", fg="#ffcd0e", font="none 12 bold", padx=15, pady=15)
-instruction_label.grid(column=0, row=4)
+    # label for definition
+    instruction_label = tk.Label(app, text="Definition:",
+                                 bg="gray", fg="#ffcd0e", font="none 12 bold", padx=15, pady=15)
+    instruction_label.grid(column=0, row=4)
 
-# output box
-output = tk.Text(app, width=42, height=6, bg="white", font="none 12")
-output.grid(row=5, column=0)
+    # output box
+    output = tk.Text(app, width=42, height=6, bg="white", font="none 12")
+    output.grid(row=5, column=0)
 
-# add/edit button
-add_edit_text = tk.StringVar()
-add_button = tk.Button(
-    app, textvariable=add_edit_text, font="none 12", command=on_change)
+    # add/edit button
+    add_edit_text = tk.StringVar()
+    add_button = tk.Button(
+        app, textvariable=add_edit_text, font="none 12", command=on_change)
 
-app.mainloop()
+    app.mainloop()
